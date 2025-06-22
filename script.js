@@ -234,7 +234,7 @@ function gerarPDF() {
     posicaoY += adicionarTexto(paragrafo2, margemEsquerda, posicaoY);
     posicaoY += 5;
     
-    const paragrafo3 = `        Desta forma, com fundamento no art. 160, §1º, do Código de Processo Penal, solicito, respeitosamente, dilação de prazo para conclusão do Laudo Pericial de ${dados.prazoNumero} (${dados.prazoExtenso}) dias, a fim de assegurar a qualidade e a fidelidade técnica necessárias à conclusão do trabalho pericial.`;
+    const paragrafo3 = `        Desta forma, com fundamento no art. 160, Parágrafo Único, do Código de Processo Penal, solicito, respeitosamente, dilação de prazo para conclusão do Laudo Pericial de ${dados.prazoNumero} (${dados.prazoExtenso}) dias, a fim de assegurar a qualidade e a fidelidade técnica necessárias à conclusão do trabalho pericial.`;
     posicaoY += adicionarTexto(paragrafo3, margemEsquerda, posicaoY);
     posicaoY += 5;
     
@@ -248,11 +248,12 @@ function gerarPDF() {
     posicaoY += 10;
     
     // Recebimento
-    posicaoY += adicionarTexto("Recebido em: __________________________", margemEsquerda, posicaoY);
+    posicaoY += adicionarTexto("Recebido em: __________________________", 0, posicaoY,{ alinhamento: 'right' });
     posicaoY += 5;
-    posicaoY += adicionarTexto("Nome/ cargo: _________________________", margemEsquerda, posicaoY);
+
+    posicaoY += adicionarTexto("Nome/ cargo: _________________________", 0, posicaoY,{ alinhamento: 'right' });
     posicaoY += 5;
-    posicaoY += adicionarTexto("Data: ___/___/____.", margemEsquerda, posicaoY);
+    posicaoY += adicionarTexto("Data: ___/___/____.", 0, posicaoY,{ alinhamento: 'right' });
     
     // Salvar o PDF
     const nomeArquivo = `Oficio_Prazo_${dados.boIpTc.replace(/[^a-zA-Z0-9]/g, '_')}_${new Date().getTime()}.pdf`;

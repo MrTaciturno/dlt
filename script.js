@@ -116,7 +116,7 @@ function gerarConteudoOficio(dados) {
             
             Em virtude da elevada demanda de serviços periciais atualmente em execução nesta unidade e da limitação do quadro funcional disponível, não será possível concluir o laudo pericial dentro do prazo inicialmente fixado.<br><br>
             
-            Desta forma, com fundamento no art. 160, §1º, do Código de Processo Penal, solicito, respeitosamente, dilação de prazo para conclusão do Laudo Pericial de <strong>${dados.prazoNumero} (${dados.prazoExtenso})</strong> dias, a fim de assegurar a qualidade e a fidelidade técnica necessárias à conclusão do trabalho pericial.<br><br>
+            Desta forma, com fundamento no art. 160, Parágrafo Único, do Código de Processo Penal, solicito, respeitosamente, dilação de prazo para conclusão do Laudo Pericial de <strong>${dados.prazoNumero} (${dados.prazoExtenso})</strong> dias, a fim de assegurar a qualidade e a fidelidade técnica necessárias à conclusão do trabalho pericial.<br><br>
             
             Atenciosamente,
         </div>
@@ -187,8 +187,15 @@ function gerarPDF() {
             doc.text(texto, larguraPagina - margemDireita, y, { align: 'right' });
         } else {
             const linhas = doc.splitTextToSize(texto, larguraTexto);
-            doc.text(linhas, x, y);
-            return linhas.length * (tamanhoFonte * 0.35);
+            if (alinhamento === 'justify') {
+                for (let i = 0; i < linhas.length; i++) {
+                    doc.text(linhas[i], x, y + (i * (tamanhoFonte * 0.35)), { align: 'justify' });
+                }
+                return linhas.length * (tamanhoFonte * 0.35);
+            } else {
+                doc.text(linhas, x, y);
+                return linhas.length * (tamanhoFonte * 0.35);
+            }
         }
         return tamanhoFonte * 0.35;
     }
@@ -234,10 +241,14 @@ function gerarPDF() {
     posicaoY += adicionarTexto(paragrafo2, margemEsquerda, posicaoY);
     posicaoY += 5;
     
+    // const paragrafo3 = `        Desta forma, com fundamento no art. 160, Parágrafo Único, do Código de Processo Penal, solicito, respeitosamente, dilação de prazo para conclusão do Laudo Pericial de ${dados.prazoNumero} (${dados.prazoExtenso}) dias, a fim de assegurar a qualidade e a fidelidade técnica necessárias à conclusão do trabalho pericial.`;
+    // posicaoY += adicionarTexto(paragrafo3, margemEsquerda, posicaoY);
+    // posicaoY += 5;
     const paragrafo3 = `        Desta forma, com fundamento no art. 160, Parágrafo Único, do Código de Processo Penal, solicito, respeitosamente, dilação de prazo para conclusão do Laudo Pericial de ${dados.prazoNumero} (${dados.prazoExtenso}) dias, a fim de assegurar a qualidade e a fidelidade técnica necessárias à conclusão do trabalho pericial.`;
     posicaoY += adicionarTexto(paragrafo3, margemEsquerda, posicaoY);
     posicaoY += 5;
     
+
     posicaoY += adicionarTexto("Atenciosamente,", margemEsquerda, posicaoY);
     posicaoY += 15;
     

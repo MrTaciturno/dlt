@@ -124,7 +124,8 @@ function gerarConteudoOficio(dados) {
         <div class="preview-signature">
             <strong>Perito Criminal:</strong> ${dados.peritoCriminal}<br><br>
             <strong>Assinatura:</strong> _________________________<br><br><br>
-            
+        </div>
+        <div class="preview-date">
             <strong>Recebido em:</strong> __________________________<br><br>
             <strong>Nome/ cargo:</strong> _________________________<br><br>
             <strong>Data:</strong> ___/___/____

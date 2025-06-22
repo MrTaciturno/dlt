@@ -136,7 +136,7 @@ function gerarConteudoOficio(dados) {
 // Função para gerar preview do ofício
 function gerarPreview() {
     if (!validarCampos()) {
-        alert('Por favor, preencha todos os campos obrigatórios antes de gerar a visualização.');
+        mostrarErroTemporario('Por favor, preencha todos os campos obrigatórios antes de gerar a visualização.');
         return;
     }
 
@@ -153,9 +153,34 @@ function gerarPreview() {
 }
 
 // Função para gerar PDF
+function mostrarErroTemporario(mensagem) {
+    const erroDiv = document.createElement('div');
+    erroDiv.style.position = 'fixed';
+    erroDiv.style.top = '10px';
+    erroDiv.style.left = '50%';
+    erroDiv.style.transform = 'translateX(-50%)';
+    erroDiv.style.backgroundColor = 'blue';
+    erroDiv.style.color = 'white';
+    erroDiv.style.padding = '10px';
+    erroDiv.style.borderRadius = '5px';
+    erroDiv.style.zIndex = '9999';
+    erroDiv.style.opacity = '1';
+    erroDiv.innerHTML = mensagem;
+    document.body.appendChild(erroDiv);
+
+    setTimeout(() => {
+        erroDiv.style.opacity = '0';
+        setTimeout(() => {
+            document.body.removeChild(erroDiv);
+        }, 2000);
+    }, 2000);
+}
 function gerarPDF() {
     if (!validarCampos()) {
-        alert('Por favor, preencha todos os campos obrigatórios antes de gerar o PDF.');
+
+
+        mostrarErroTemporario('Por favor, preencha todos os campos obrigatórios antes de gerar o PDF.');
+        //alert('Por favor, preencha todos os campos obrigatórios antes de gerar o PDF.');
         return;
     }
 
@@ -261,7 +286,7 @@ function gerarPDF() {
     doc.save(nomeArquivo);
     
     // Mostrar mensagem de sucesso
-    //alert('PDF gerado com sucesso! O download deve iniciar automaticamente.');
+    mostrarErroTemporario('PDF gerado com sucesso! O download deve iniciar automaticamente.');
 }
 
 // Event listeners

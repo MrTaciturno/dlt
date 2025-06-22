@@ -42,7 +42,7 @@ function numeroParaExtenso(numero) {
 // Função para validar campos obrigatórios
 function validarCampos() {
     const camposObrigatorios = [
-        'dia', 'mes', 'ano', 'delegacia', 'municipio', 
+        'dia', 'mes', 'ano', 'delegacia', 'municipio', 'cidade',
         'boIpTc', 'laudoPericial', 'prazoNumero', 'peritoCriminal'
     ];
 
@@ -94,7 +94,7 @@ function gerarConteudoOficio(dados) {
         <div class="preview-title">OFÍCIO</div>
         
         <div class="preview-date">
-            Americana, ${dados.dia} de ${dados.mes} de ${dados.ano}.
+            ${dados.cidade}, ${dados.dia} de ${dados.mes} de ${dados.ano}.
         </div>
         
         <div class="preview-address">
@@ -227,7 +227,7 @@ function gerarPDF() {
     posicaoY += 15;
     
     // Data
-    const textoData = `Americana, ${dados.dia} de ${dados.mes} de ${dados.ano}.`;
+    const textoData = `${dados.cidade}, ${dados.dia} de ${dados.mes} de ${dados.ano}.`;
     adicionarTexto(textoData, 0, posicaoY, { alinhamento: 'right' });
     posicaoY += 20;
     

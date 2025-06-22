@@ -261,7 +261,7 @@ function gerarPDF() {
     doc.save(nomeArquivo);
     
     // Mostrar mensagem de sucesso
-    alert('PDF gerado com sucesso! O download deve iniciar automaticamente.');
+    //alert('PDF gerado com sucesso! O download deve iniciar automaticamente.');
 }
 
 // Event listeners

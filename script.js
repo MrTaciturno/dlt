@@ -220,7 +220,7 @@ function gerarPDF() {
     // Inserir cabeçalho do PDF
     const img = new Image();
     img.src = 'cabecalho.png';
-    doc.addImage(img, 'PNG', 10, 10, larguraPagina-10, 30);
+    doc.addImage(img, 'PNG', 20, 10, larguraPagina-40, 20);
     
     // Título
     posicaoY += adicionarTexto('OFÍCIO', 0, posicaoY, { 

@@ -217,6 +217,10 @@ function gerarPDF() {
         }
         return tamanhoFonte * 0.35;
     }
+    // Inserir cabeçalho do PDF
+    const img = new Image();
+    img.src = 'cabecalho.png';
+    doc.addImage(img, 'PNG', 0, 0, larguraPagina, 30);
     
     // Título
     posicaoY += adicionarTexto('OFÍCIO', 0, posicaoY, { 

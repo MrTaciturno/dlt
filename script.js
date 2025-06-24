@@ -195,7 +195,7 @@ function gerarPDF() {
     const margemDireita = 20;
     const larguraPagina = 210;
     const larguraTexto = larguraPagina - margemEsquerda - margemDireita;
-    let posicaoY = 30;
+    let posicaoY = 40;
     
     // Função auxiliar para adicionar texto com quebra de linha
     function adicionarTexto(texto, x, y, opcoes = {}) {
@@ -220,7 +220,7 @@ function gerarPDF() {
     // Inserir cabeçalho do PDF
     const img = new Image();
     img.src = 'cabecalho.png';
-    doc.addImage(img, 'PNG', 0, 0, larguraPagina, 30);
+    doc.addImage(img, 'PNG', 10, 10, larguraPagina-10, 30);
     
     // Título
     posicaoY += adicionarTexto('OFÍCIO', 0, posicaoY, { 
@@ -228,12 +228,12 @@ function gerarPDF() {
         estilo: 'bold', 
         alinhamento: 'center' 
     });
-    posicaoY += 15;
+    posicaoY += 10;
     
     // Data
     const textoData = `${dados.cidade}, ${dados.dia} de ${dados.mes} de ${dados.ano}.`;
     adicionarTexto(textoData, 0, posicaoY, { alinhamento: 'right' });
-    posicaoY += 20;
+    posicaoY += 15;
     
     // Destinatário
     posicaoY += adicionarTexto('Ao Excelentíssimo Senhor Delegado de Polícia', margemEsquerda, posicaoY, { estilo: 'bold' });
